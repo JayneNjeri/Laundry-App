@@ -208,7 +208,7 @@ const styles = StyleSheet.create({
   authButton: {
     width: '100%',
     height: 56,
-    borderRadius: 28,
+    borderRadius: 50,
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 16,
@@ -223,11 +223,13 @@ const styles = StyleSheet.create({
   },
   signUpButton: {
     backgroundColor: '#FFFFFF',
+    borderRadius: 15,
+    height: 50,
   },
   loginButton: {
-    backgroundColor: 'transparent',
-    borderWidth: 2,
-    borderColor: '#FFFFFF',
+    backgroundColor: '#2479B2',
+    borderRadius: 15,
+    height: 50,
   },
   signUpButtonText: {
     fontFamily: 'Poppins-Medium',
