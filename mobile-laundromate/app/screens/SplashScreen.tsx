@@ -8,20 +8,23 @@ import {
   TouchableOpacity,
   Dimensions
 } from 'react-native';
-import { useRouter } from 'expo-router';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { MaterialIcons, FontAwesome } from '@expo/vector-icons';
 import { useFonts } from 'expo-font';
 import { StatusBar } from 'expo-status-bar';
 import * as ExpoSplashScreen from 'expo-splash-screen';
+import type { RootStackParamList } from '../index';
 
 // Prevent the splash screen from auto-hiding
 ExpoSplashScreen.preventAutoHideAsync();
 
 const { width } = Dimensions.get('window');
 
-const CustomSplashScreen: React.FC = () => {
+type SplashScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Splash'>;
 
-    const router = useRouter();
+const CustomSplashScreen: React.FC = () => {
+  const navigation = useNavigation<SplashScreenNavigationProp>();
   // Animation values
   const [fadeAnim] = useState(new Animated.Value(1));
   const [slideAnim] = useState(new Animated.Value(0));
@@ -62,7 +65,7 @@ const CustomSplashScreen: React.FC = () => {
         });
       }, 3000);
     }
-  }, [router,fontsLoaded, fadeAnim, slideAnim, authOpacity]);
+  }, [fontsLoaded, fadeAnim, slideAnim, authOpacity]);
 
   // Handle layout when resources are ready
   const onLayoutRootView = useCallback(async () => {
@@ -125,14 +128,14 @@ const CustomSplashScreen: React.FC = () => {
           <View style={styles.mainAuthButtons}>
             <TouchableOpacity 
               style={[styles.authButton, styles.signUpButton]}
-              onPress={() => router.push('/signup')}
+              onPress={()=>navigation.navigate('SignUp')}
             >
               <Text style={styles.signUpButtonText}>Sign Up</Text>
             </TouchableOpacity>
             
             <TouchableOpacity 
               style={[styles.authButton, styles.loginButton]}
-              onPress={() => router.push('/login')}
+              onPress={() => navigation.navigate('Login')}
             >
               <Text style={styles.loginButtonText}>Log In</Text>
             </TouchableOpacity>
