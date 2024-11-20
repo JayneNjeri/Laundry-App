@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '700',
     color: '#35434C',
-    marginLeft: 10,
+     marginLeft: 10
   },
   grid: {
     padding: 20,

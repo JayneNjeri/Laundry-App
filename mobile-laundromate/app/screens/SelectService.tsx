@@ -44,7 +44,7 @@ const SelectService: React.FC = () => {
             onPress={() => handleCardPress(index)}
           />
         ))}
-        <TouchableOpacity style={styles.nextButton} onPress={() => navigation.navigate('LoadingPage')}>
+        <TouchableOpacity style={styles.nextButton} onPress={() => navigation.navigate('ContactDetails')}>
           <Text style={styles.nextButtonText}>Next</Text>
         </TouchableOpacity>
       </ScrollView>
