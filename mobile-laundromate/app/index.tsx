@@ -7,6 +7,8 @@ import SignUpScreen from './screens/SignUp';
 import LoginScreen from './screens/LogIn';
 import HomePage from './screens/Home';
 import AccountRecovery from './screens/AccountRecovery';
+import PricesPage from './screens/PricesPage';
+import SelectService from './screens/SelectService';
 
 // Define the type for our stack navigator
 export type RootStackParamList = {
@@ -15,6 +17,8 @@ export type RootStackParamList = {
   Login: undefined;
   Home: undefined;
   AccountRecovery: undefined;
+  Prices: undefined;
+  SelectService: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -34,6 +38,8 @@ function App() {
           <Stack.Screen name="Login" component={LoginScreen} />
           <Stack.Screen name="Home" component={HomePage} />
           <Stack.Screen name="AccountRecovery" component={AccountRecovery} /> 
+          <Stack.Screen name="Prices" component={PricesPage} />
+          <Stack.Screen name="SelectService" component={SelectService} />
         </Stack.Navigator>
     </SafeAreaProvider>
   );
