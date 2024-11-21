@@ -16,6 +16,7 @@ import ContactDetails from './screens/ContactDetails';
 import LoadingScreen from './screens/LoadingScreen';
 import BottomTabNavigator from './navigation/BottomTabNavigator';
 import PlaceOrder from './screens/PlaceOrder';
+import OrderPlaced from './screens/OrderPlaced';
 
 // Define the type for our stack navigator
 export type RootStackParamList = {
@@ -31,6 +32,7 @@ export type RootStackParamList = {
   ContactDetails: undefined;
   BottomTabNavigatior: undefined;
   PlaceOrder: undefined;
+  OrderPlaced: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -57,6 +59,7 @@ function App() {
           <Stack.Screen name="ContactDetails" component={ContactDetails} />
           <Stack.Screen name="BottomTabNavigatior" component={BottomTabNavigator} />
           <Stack.Screen name="PlaceOrder" component={PlaceOrder} />
+          <Stack.Screen name="OrderPlaced" component={OrderPlaced} />
         </Stack.Navigator>
     </SafeAreaProvider>
   );

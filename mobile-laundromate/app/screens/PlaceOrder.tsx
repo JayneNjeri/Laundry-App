@@ -4,25 +4,37 @@ import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../index';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import { useStore } from '../stores/UserStore';
 
 type PlaceOrderNavigationProp = NativeStackNavigationProp<RootStackParamList, 'PlaceOrder'>;
 
 const PlaceOrder: React.FC = () => {
   const navigation = useNavigation<PlaceOrderNavigationProp>();
+  const selectedServices = useStore((state) => state.selectedServices);
+  const fullName = useStore((state) => state.fullName);
+  const phoneNumber = useStore((state) => state.phoneNumber);
+  const collectionMethod = useStore((state) => state.collectionMethod);
+  const deliveryMethod = useStore((state) => state.deliveryMethod);
 
   return (
     <View style={styles.container}>
       <View style={styles.appBar}>
-        <TouchableOpacity onPress={() => navigation.navigate('SelectService')}>
-          <MaterialIcons name="arrow-back" size={24} color="#35434C" />
-        </TouchableOpacity>
         <Text style={styles.appBarTitle}>Place Order</Text>
       </View>
       <View style={styles.content}>
-        <Text style={styles.message}>Your order has been placed successfully!</Text>
-        <MaterialIcons name="check-circle" size={100} color="#32AAFA" />
-        <TouchableOpacity style={styles.homeButton} onPress={() => navigation.navigate('Home')}>
-          <Text style={styles.homeButtonText}>Go to Home</Text>
+        <Text style={styles.sectionTitle}>Order Summary</Text>
+        <Text style={styles.orderDetail}>Full Name: {fullName}</Text>
+        <Text style={styles.orderDetail}>Phone Number: {phoneNumber}</Text>
+        <Text style={styles.orderDetail}>Collection Method: {collectionMethod}</Text>
+        <Text style={styles.orderDetail}>Delivery Method: {deliveryMethod}</Text>
+        <Text style={styles.sectionTitle}>Selected Services</Text>
+        {selectedServices.map((service, index) => (
+          <Text key={index} style={styles.orderDetail}>
+            {service.name} - Ksh.{service.price}
+          </Text>
+        ))}
+        <TouchableOpacity style={styles.homeButton} onPress={() => navigation.navigate('OrderPlaced')}>
+          <Text style={styles.homeButtonText}>Place Order</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -53,13 +65,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 20,
   },
-  message: {
+  sectionTitle: {
     fontFamily: 'Poppins',
     fontSize: 18,
     fontWeight: '700',
     color: '#35434C',
     marginBottom: 20,
-    textAlign: 'center',
+  },
+  orderDetail: {
+    fontFamily: 'Poppins',
+    fontSize: 16,
+    color: '#35434C',
+    marginBottom: 10,
   },
   homeButton: {
     backgroundColor: '#32AAFA',
