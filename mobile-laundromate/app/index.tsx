@@ -14,6 +14,8 @@ import SelectService from './screens/SelectService';
 import CollectionandDelivery from './screens/CollectionandDelivery';
 import ContactDetails from './screens/ContactDetails';
 import LoadingScreen from './screens/LoadingScreen';
+import BottomTabNavigator from './navigation/BottomTabNavigator';
+import PlaceOrder from './screens/PlaceOrder';
 
 // Define the type for our stack navigator
 export type RootStackParamList = {
@@ -27,6 +29,8 @@ export type RootStackParamList = {
   LoadingScreen: undefined;
   CollectionandDelivery: undefined;
   ContactDetails: undefined;
+  BottomTabNavigatior: undefined;
+  PlaceOrder: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -51,6 +55,8 @@ function App() {
           <Stack.Screen name ="LoadingScreen" component={LoadingScreen} />
           <Stack.Screen name="CollectionandDelivery" component={CollectionandDelivery} />
           <Stack.Screen name="ContactDetails" component={ContactDetails} />
+          <Stack.Screen name="BottomTabNavigatior" component={BottomTabNavigator} />
+          <Stack.Screen name="PlaceOrder" component={PlaceOrder} />
         </Stack.Navigator>
     </SafeAreaProvider>
   );

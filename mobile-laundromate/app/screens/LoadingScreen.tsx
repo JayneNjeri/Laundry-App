@@ -13,7 +13,7 @@ const LoadingScreen: React.FC = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigation.navigate('ContactDetails');
+      navigation.navigate('PlaceOrder');
     }, 3000); // Simulate a loading time of 3 seconds
 
     return () => clearTimeout(timer);
