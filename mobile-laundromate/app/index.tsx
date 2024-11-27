@@ -1,9 +1,9 @@
 import React from 'react';
-// import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-
+// Import all your screens
 import CustomSplashScreen from './screens/SplashScreen';
 import SignUpScreen from './screens/SignUp';
 import LoginScreen from './screens/LogIn';
@@ -11,14 +11,14 @@ import HomePage from './screens/Home';
 import AccountRecovery from './screens/AccountRecovery';
 import PricesPage from './screens/PricesPage';
 import SelectService from './screens/SelectService';
-import CollectionandDelivery from './screens/CollectionandDelivery';
+import CollectionAndDelivery from './screens/CollectionandDelivery';
 import ContactDetails from './screens/ContactDetails';
 import LoadingScreen from './screens/LoadingScreen';
-import BottomTabNavigator from './navigation/BottomTabNavigator';
+import CustomBottomTabNavigator from './navigation/CustomBottomTabNavigator';
 import PlaceOrder from './screens/PlaceOrder';
 import OrderPlaced from './screens/OrderPlaced';
 
-// Define the type for our stack navigator
+
 export type RootStackParamList = {
   Splash: undefined;
   SignUp: undefined;
@@ -28,9 +28,9 @@ export type RootStackParamList = {
   Prices: undefined;
   SelectService: undefined;
   LoadingScreen: undefined;
-  CollectionandDelivery: undefined;
+  CollectionAndDelivery: undefined;
   ContactDetails: undefined;
-  BottomTabNavigatior: undefined;
+  CustomBottomTabNavigator: undefined;
   PlaceOrder: undefined;
   OrderPlaced: undefined;
 };
@@ -40,6 +40,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 function App() {
   return (
     <SafeAreaProvider>
+      <NavigationContainer>
         <Stack.Navigator 
           initialRouteName="Splash"
           screenOptions={{
@@ -54,15 +55,20 @@ function App() {
           <Stack.Screen name="AccountRecovery" component={AccountRecovery} /> 
           <Stack.Screen name="Prices" component={PricesPage} />
           <Stack.Screen name="SelectService" component={SelectService} />
-          <Stack.Screen name ="LoadingScreen" component={LoadingScreen} />
-          <Stack.Screen name="CollectionandDelivery" component={CollectionandDelivery} />
+          <Stack.Screen name="LoadingScreen" component={LoadingScreen} />
+          <Stack.Screen name="CollectionAndDelivery" component={CollectionAndDelivery} />
           <Stack.Screen name="ContactDetails" component={ContactDetails} />
-          <Stack.Screen name="BottomTabNavigatior" component={BottomTabNavigator} />
+          <Stack.Screen 
+            name="CustomBottomTabNavigator" 
+            component={CustomBottomTabNavigator}
+            options={{ headerShown: false }}
+          />
           <Stack.Screen name="PlaceOrder" component={PlaceOrder} />
           <Stack.Screen name="OrderPlaced" component={OrderPlaced} />
         </Stack.Navigator>
+      </NavigationContainer>
     </SafeAreaProvider>
   );
 }
 
-export default App; 
+export default App;

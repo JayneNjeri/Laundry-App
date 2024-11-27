@@ -30,3 +30,5 @@ export const useStore = create<StoreState>((set) => ({
   setCollectionMethod: (method) => set({ collectionMethod: method }),
   setDeliveryMethod: (method) => set({ deliveryMethod: method }),
 }));
+
+export default useStore;
